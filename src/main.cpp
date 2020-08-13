@@ -27,9 +27,10 @@ void setup() {
     delay(100);
     lcd.begin(16, 2);
 
-    for (uint8_t i = 0; i < 5; ++i)
+    for (uint8_t i = 0; i < 6; ++i)
         lcd.createChar(i, progressChar[i]);
 
+    lcd.createChar(PROGRESS_NONE_CHAR, progressNoneChar);
     lcd.createChar(MACHINE_CHAR, machineChar);
     lcd.createChar(RAIN_CHAR, rainChar);
 
@@ -145,18 +146,19 @@ void progress(uint8_t row, uint8_t current, uint8_t total) {
     uint8_t idxDot = 0;
 
     for (uint8_t i = 1; i <= colTotal; ++i) {
-        if (i > colCurrent)
-            break;
-
-        colDot = i * dotSize;
-
-        if (colDot >= current) {
-            idxDot = colDot - current;
-            idxDot = dotSize - idxDot - 1;
+        if (i > colCurrent) {
+            lcd.write(byte(PROGRESS_NONE_CHAR));
         } else {
-            idxDot = dotSize - 1;
-        }
+            colDot = i * dotSize;
 
-        lcd.write(byte(idxDot));
+            if (colDot >= current) {
+                idxDot = colDot - current;
+                idxDot = dotSize - idxDot - 1;
+            } else {
+                idxDot = dotSize - 1;
+            }
+
+            lcd.write(byte(idxDot));
+        }
     }
 }
