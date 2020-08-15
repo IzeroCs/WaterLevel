@@ -13,9 +13,9 @@ uint8_t machinePreProgress    = 0;
 uint8_t machineNcBlink        = 0;
 
 uint8_t rainHeightTotal    = 145;
-uint8_t rainHeightOverflow = 129;
+uint8_t rainHeightOverflow = 130;
 uint8_t rainHeightMinimum  = 14;
-uint8_t rainHeightSensor   = 16;
+uint8_t rainHeightSensor   = 15;
 uint8_t rainPreProgress    = 0;
 uint8_t rainNcBlink        = 0;
 
