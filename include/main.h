@@ -5,7 +5,6 @@
 #include <Ultrasonic.h>
 #include <LiquidCrystalIO.h>
 #include <IoAbstractionWire.h>
-#include <TickerArduino.h>
 
 #include "char.h"
 

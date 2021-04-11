@@ -1,7 +1,6 @@
 #include "main.h"
 
 LiquidCrystal lcd(0x27);
-TickerArduino ticker(distance, 700);
 Ultrasonic ultrasonicMachine(2, 4);
 Ultrasonic ultrasonicRain(7, 8);
 
@@ -41,15 +40,9 @@ void setup() {
     lcd.setCursor(9, 1);
     lcd.print("LEVEL");
     delay(1000);
-
-    ticker.start();
 }
 
 void loop() {
-    ticker.update();
-}
-
-void distance() {
     uint8_t machineDistance = ultrasonicMachine.read();
     uint8_t rainDistance    = ultrasonicRain.read();
     uint8_t machineProgress = 0;
@@ -58,6 +51,26 @@ void distance() {
 
     bool machineError = false;
     bool rainError = false;
+
+    Serial.print("M Distance: ");
+    Serial.println(machineDistance);
+    Serial.print("M Height Total: ");
+    Serial.println(machineHeightTotal);
+    Serial.print("M Height Sensor: ");
+    Serial.println(machineHeightSensor);
+    Serial.print("M Height Overflow: ");
+    Serial.println(machineHeightOverflow);
+    Serial.println();
+    Serial.print("R Distance: ");
+    Serial.println(rainDistance);
+    Serial.print("R Height Total: ");
+    Serial.println(rainHeightTotal);
+    Serial.print("R Height Sensor: ");
+    Serial.println(rainHeightSensor);
+    Serial.print("R Height Overflow: ");
+    Serial.println(rainHeightOverflow);
+    Serial.println("-----------------------------------");
+    Serial.println();
 
     if (machineDistance > machineHeightTotal + 10) {
         machineError = true;
@@ -132,6 +145,8 @@ void distance() {
         machinePreProgress = machineProgress;
         rainPreProgress    = rainProgress;
     }
+
+    delay(700);
 }
 
 void progress(uint8_t row, uint8_t current, uint8_t total) {
