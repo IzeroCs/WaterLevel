@@ -20,8 +20,8 @@ uint8_t rainNcBlink        = 0;
 
 void setup() {
     Wire.begin();
-    Serial.begin(115200);
-    Serial.println("MeasureWater running");
+    // Serial.begin(115200);
+    // Serial.println("MeasureWater running");
 
     delay(100);
     lcd.begin(16, 2);
@@ -52,25 +52,25 @@ void loop() {
     bool machineError = false;
     bool rainError = false;
 
-    Serial.print("M Distance: ");
-    Serial.println(machineDistance);
-    Serial.print("M Height Total: ");
-    Serial.println(machineHeightTotal);
-    Serial.print("M Height Sensor: ");
-    Serial.println(machineHeightSensor);
-    Serial.print("M Height Overflow: ");
-    Serial.println(machineHeightOverflow);
-    Serial.println();
-    Serial.print("R Distance: ");
-    Serial.println(rainDistance);
-    Serial.print("R Height Total: ");
-    Serial.println(rainHeightTotal);
-    Serial.print("R Height Sensor: ");
-    Serial.println(rainHeightSensor);
-    Serial.print("R Height Overflow: ");
-    Serial.println(rainHeightOverflow);
-    Serial.println("-----------------------------------");
-    Serial.println();
+    // Serial.print("M Distance: ");
+    // Serial.println(machineDistance);
+    // Serial.print("M Height Total: ");
+    // Serial.println(machineHeightTotal);
+    // Serial.print("M Height Sensor: ");
+    // Serial.println(machineHeightSensor);
+    // Serial.print("M Height Overflow: ");
+    // Serial.println(machineHeightOverflow);
+    // Serial.println();
+    // Serial.print("R Distance: ");
+    // Serial.println(rainDistance);
+    // Serial.print("R Height Total: ");
+    // Serial.println(rainHeightTotal);
+    // Serial.print("R Height Sensor: ");
+    // Serial.println(rainHeightSensor);
+    // Serial.print("R Height Overflow: ");
+    // Serial.println(rainHeightOverflow);
+    // Serial.println("-----------------------------------");
+    // Serial.println();
 
     if (machineDistance > machineHeightTotal + 10) {
         machineError = true;
